@@ -18,6 +18,7 @@ public class PatientDTO {
     String sexe;
     Long medecinId;
     String statutConsultation;
+    String statutPrelevement;
 
     public static PatientDTO of(Patient p){
         return PatientDTO.builder()
@@ -29,6 +30,7 @@ public class PatientDTO {
                 .dateNaissance(p.getDate_Naissance())
                 .sexe(p.getSexe() != null ? p.getSexe().name() : null)
                 .statutConsultation(p.getStatutConsultation() != null ? p.getStatutConsultation().name(): null)
+                .statutPrelevement(p.getStatutPrelevement() != null ? p.getStatutPrelevement().name(): null)
                 .medecinId(p.getMedecin() != null ? p.getMedecin().getId() : null)
                 .build();
     }

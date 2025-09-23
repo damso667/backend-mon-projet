@@ -1,5 +1,7 @@
  package com.example.ProjetApiBts.service;
  import com.example.ProjetApiBts.enums.EtatPaiement;
+ import com.example.ProjetApiBts.enums.StatutPatient;
+ import com.example.ProjetApiBts.enums.StatutPrelevement;
  import com.example.ProjetApiBts.models.*;
  import com.example.ProjetApiBts.repository.*;
  import com.example.ProjetApiBts.shared.Ids;
@@ -23,6 +25,7 @@
      private final MedecinRepository medecinRepository;
      private final TechnicienRepository technicientRepository;
      private final NotificationRepository notificationRepository;
+     private final EmailService emailService;
 
      // ----- MÉDECIN : prescrire une analyse (seulement si le ticket du patient est payé ET s'il suit le patient)
      public Analyse creerAnalyse(Long patientId, Long typeExamenId, String description, Long medecinConnecteId) {
@@ -123,7 +126,14 @@
          p.setTechnicien(tech);
          p.setTypePrelevement(typePrelevement);
          p.setDatePrelevement(new Date());
-         return prelevementRepository.save(p);
+         Prelevement saved = prelevementRepository.save(p);
+
+         Patient patient = a.getPatient();
+         patient.setStatutPrelevement(StatutPrelevement.EFFECTUER);
+         patientRepository.save(patient);
+
+         return saved;
+
      }
 
      // ----- TECHNICIEN : saisir les résultats (doit être le technicien de l’analyse)
@@ -156,8 +166,16 @@
 
          a.setValide(true);
          a.setDateValidation(new Date());
-         return analyseRepository.save(a);
+         Analyse analyses = analyseRepository.save(a);
+         try {
+             String contenu = "Bonjour "+ a.getPatient().getNom() +",\n\n"
+                     + "votre analyse est deja disponible et elle a ete valiser par Dr " +analyses.getMedecin().getNom()+" veiller vous diriger vers le laaboratoire pour resevoir le resultat "+".\n\n";
+             emailService.envoyerEmail(analyses.getPatient().getEmail(),"Resultat de votre analyse validee",contenu);
+         }catch (Exception e){
+             System.err.println("Erreur lors de l'envoie de l'Email : " + e.getMessage());
+         }
 
+         return analyses;
      }
 
      public  List<Analyse>findAnalyseEnAttentePourTechnicien(Long technitientId){

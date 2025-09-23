@@ -3,6 +3,7 @@ package com.example.ProjetApiBts.models;
 
 import com.example.ProjetApiBts.enums.Sexe;
 import com.example.ProjetApiBts.enums.StatutPatient;
+import com.example.ProjetApiBts.enums.StatutPrelevement;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,9 @@ public class Patient {
     private StatutPatient StatutConsultation;
 
     @Enumerated(EnumType.STRING)
+    private StatutPrelevement StatutPrelevement;
+
+    @Enumerated(EnumType.STRING)
     private Sexe sexe;
 
     @Column(unique = true)
@@ -42,6 +46,6 @@ public class Patient {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "technicien_id")
-    private Technicient technicien;
+   private Technicient technicien;
 
 }

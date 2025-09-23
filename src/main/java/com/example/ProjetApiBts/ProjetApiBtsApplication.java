@@ -3,6 +3,7 @@ package com.example.ProjetApiBts;
 import com.example.ProjetApiBts.enums.Sexe;
 import com.example.ProjetApiBts.enums.Specilite;
 import com.example.ProjetApiBts.enums.StatutPatient;
+import com.example.ProjetApiBts.enums.StatutPrelevement;
 import com.example.ProjetApiBts.models.*;
 import com.example.ProjetApiBts.repository.*;
 import org.springframework.boot.CommandLineRunner;
@@ -174,6 +175,7 @@ public class ProjetApiBtsApplication {
             p1.setTelephone("650000000");
             p1.setAdresse("MELEN");
             p1.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p1.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
 
             Patient p2 = new Patient();
@@ -185,6 +187,7 @@ public class ProjetApiBtsApplication {
             p2.setTelephone("643852065");
             p2.setAdresse("NKOABANG");
             p2.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p2.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
 
             Patient p3 = new Patient();
@@ -196,6 +199,7 @@ public class ProjetApiBtsApplication {
             p3.setTelephone("653857075");
             p3.setAdresse("TRADAT");
             p3.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p3.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
             Patient p4 = new Patient();
             p4.setNom("SONFACK TAFFO");
@@ -205,6 +209,7 @@ public class ProjetApiBtsApplication {
             p4.setDate_Naissance("03-03-1975");
             p4.setTelephone("683857075");
             p4.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p4.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
             Patient p5 = new Patient();
             p5.setNom("ATANGANA");
@@ -215,6 +220,7 @@ public class ProjetApiBtsApplication {
             p5.setTelephone("693857075");
             p5.setAdresse("POSTE CENTRALLE");
             p5.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p5.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
             Patient p6 = new Patient();
             p6.setNom("MFOUNDI");
@@ -225,16 +231,18 @@ public class ProjetApiBtsApplication {
             p6.setTelephone("695867075");
             p6.setAdresse("MELEN");
             p6.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p6.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
             Patient p7 = new Patient();
             p7.setNom("HENGUE");
             p7.setPrenom("ViVie");
             p7.setSexe(Sexe.FEMININ);
-            p7.setEmail("Hengue@gmail.com");
+            p7.setEmail("viviendopgang@gmail.com");
             p7.setDate_Naissance("04-09-2000");
             p7.setTelephone("695867075");
             p7.setAdresse("MEEC");
             p7.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p7.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
             Patient p8 = new Patient();
             p8.setNom("TIWA");
@@ -245,6 +253,7 @@ public class ProjetApiBtsApplication {
             p8.setTelephone("696877075");
             p8.setAdresse("Douala");
             p8.setStatutConsultation(StatutPatient.EN_ATTENTE);
+            p8.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
 
             Optional<Patient> patientOptional1 = patientRepository.findByEmail(p1.getEmail());
