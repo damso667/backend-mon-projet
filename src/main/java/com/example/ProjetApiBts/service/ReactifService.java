@@ -73,6 +73,26 @@ public class ReactifService {
 
         return reactifRepository.save(reactif);
     }
+//methode qui permet de diminuer la quante stck du reactif
+    @Transactional
+    public  Reactif diminuerStock(Long reactifId, int quantite, Long responsableId) throws IllegalAccessException {
+        Secretaire secretaire = secretaireRepository.findById(responsableId)
+                .orElseThrow();
+        Reactif reactif = reactifRepository.findById(reactifId).orElseThrow();
+        int nouveauStock = (reactif.getStock() - quantite);
+         reactif.setStock(nouveauStock);
+        if(nouveauStock < 0){
+            throw  new IllegalAccessException("le stock ne peut pas devenir negatif");
+        }
+        reactif.setSecretaire(secretaire);
+        return reactifRepository.save(reactif);
+    }
+    @Transactional
+    public void suppprimer(Long reactifId){
+        Reactif reactif = reactifRepository.findById(reactifId).orElseThrow();
+        necessiteReactifRepositoy.deleteByReactifId(reactifId);
+        reactifRepository.deleteById(reactifId);
+    }
     // ✅ Lister tous les réactifs
     public List<Reactif> listerReactifs() {
         return reactifRepository.findAll();

@@ -60,4 +60,16 @@ public class ReactifController {
         return ResponseEntity.ok(ReactifDTO.of(reactif));
     }
 
+    @PutMapping("/{id}/diminuer")
+    public ResponseEntity<ReactifDTO>diminuer(@PathVariable Long id, @RequestParam int quantite,
+                                              @AuthenticationPrincipal(expression="id") Long responsableId) throws IllegalAccessException {
+        Reactif reactif = service.diminuerStock(id,quantite,responsableId);
+        return ResponseEntity.ok(ReactifDTO.of(reactif));
+    }
+    @DeleteMapping("/supprimer/{id}")
+    public ResponseEntity<Void>supprimer(@PathVariable Long id){
+        service.suppprimer(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
