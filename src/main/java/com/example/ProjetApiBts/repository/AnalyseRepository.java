@@ -1,7 +1,9 @@
 package com.example.ProjetApiBts.repository;
 
 import com.example.ProjetApiBts.models.*;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -37,4 +39,9 @@ public interface AnalyseRepository extends JpaRepository<Analyse, Long> {
     List<Analyse> resultatsPrescritsEtSuivis(@Param("medId") Long medId);
 
  List<Analyse> findByMedecinIdAndValideTrue(Long medecinId);
+
+    @Transactional
+    @Modifying
+    @Query("delete from Analyse nr where nr.typeExamen.id = :typeExamenId")
+    void deleteByTypeExamenId(@Param("typeExamenId") Long typeExamenId);
 }

@@ -3,6 +3,7 @@ package com.example.ProjetApiBts.controller;
 import com.example.ProjetApiBts.dto.ReactifDTO;
 import com.example.ProjetApiBts.dto.ReactifRequest;
 import com.example.ProjetApiBts.models.Reactif;
+import com.example.ProjetApiBts.service.AnalyseService;
 import com.example.ProjetApiBts.service.ReactifService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/reactifs")
+@RequestMapping("/api/secretaires")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('SECRETAIRE')")
 public class ReactifController {
     private final ReactifRepository repo;
+    private  final AnalyseService analyseService;
 
     @GetMapping
     @PreAuthorize("isAuthenticated()")
@@ -70,6 +72,10 @@ public class ReactifController {
     public ResponseEntity<Void>supprimer(@PathVariable Long id){
         service.suppprimer(id);
         return ResponseEntity.noContent().build();
+    }
+    @DeleteMapping("/supprimer/examen/{id}")
+    public void supprime(@PathVariable Long id){
+        analyseService.supprimerExamen(id);
     }
 
 }

@@ -83,4 +83,12 @@ public class TechnicienController {
         if (a == null) return ResponseEntity.status(403).body(ApiResponse.fail("Refus: vous n'êtes pas le technicien affecté."));
         return ResponseEntity.ok(ApiResponse.ok(AnalyseDTO.of(a)));
     }
+
+    // Get /api/techniciens/analyse/recuperer
+    @GetMapping("/analyse/recuperees")
+    public ResponseEntity<ApiResponse<List<AnalyseDTO>>> mesAnalyse(@AuthenticationPrincipal(expression = "id") Long technicienId){
+        var list = service.mesAnalyses(technicienId).stream().map(AnalyseDTO::of)
+                .toList();
+        return ResponseEntity.ok(ApiResponse.ok(list));
+    }
 }

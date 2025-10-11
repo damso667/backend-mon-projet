@@ -20,6 +20,7 @@ public class TypeExamenDTO {
         return TypeExamenDTO.builder()
                 .id(t.getId())
                 .nom(t.getNom())
+
                 .build();
     }
 }

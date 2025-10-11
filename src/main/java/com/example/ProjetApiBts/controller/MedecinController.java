@@ -2,10 +2,7 @@ package com.example.ProjetApiBts.controller;
 
 // ========================== // MedecinController.java // ========================== package com.example.ProjetApiBts.controllers;
 
-import com.example.ProjetApiBts.dto.AnaliseValideeDTO;
-import com.example.ProjetApiBts.dto.AnalyseDTO;
-import com.example.ProjetApiBts.dto.ApiResponse;
-import com.example.ProjetApiBts.dto.PatientDTO;
+import com.example.ProjetApiBts.dto.*;
 import com.example.ProjetApiBts.models.Analyse;
 import com.example.ProjetApiBts.models.Medecin;
 import com.example.ProjetApiBts.models.Notification;
@@ -67,12 +64,13 @@ public class MedecinController {
     // POST /api/medecins/analyses : prescrire
     @PostMapping("/analyses")
     public ResponseEntity<ApiResponse<AnalyseDTO>> prescrire(
-            @RequestParam Long patientId,
-            @RequestParam Long typeExamenId,
-            @RequestBody(required = false) String description,
+          //  @RequestParam Long patientId,
+        //    @RequestParam Long typeExamenId,
+        //    @RequestBody(required = false) String description,
+          @RequestBody AnalyseRequest analyseRequest,
             @AuthenticationPrincipal(expression = "id") Long medecinId
     ) {
-        Analyse a = service.creerAnalyse(patientId, typeExamenId, description, medecinId);
+        Analyse a = service.creerAnalyse(analyseRequest.getPatientId(),analyseRequest.getTypeExamenId(),analyseRequest.getDescription(), medecinId);
         if (a == null) return ResponseEntity.badRequest().body(ApiResponse.fail("Refus: ticket non payé, patient inconnu, type examen inconnu, ou vous ne suivez pas ce patient."));
         return ResponseEntity.created(URI.create("/api/analyses/" + a.getId()))
                 .body(ApiResponse.created(AnalyseDTO.of(a)));

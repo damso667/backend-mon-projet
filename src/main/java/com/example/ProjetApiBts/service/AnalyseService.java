@@ -177,6 +177,17 @@
 
          return analyses;
      }
+     // analyse recuperer par le technicien
+     public List<Analyse>mesAnalyses(Long technicienId){
+         return analyseRepository.findByTechnicienId(technicienId);
+     }
+
+     public void supprimerExamen(long TyeExamenId){
+          Analyse analyse = new Analyse();
+         analyseRepository.deleteByTypeExamenId(TyeExamenId);
+         typeExamenRepository.deleteById(TyeExamenId);
+
+     }
 
      public  List<Analyse>findAnalyseEnAttentePourTechnicien(Long technitientId){
          return prelevementRepository.findAnalysesEnAttentePourTechnicien(technitientId);
