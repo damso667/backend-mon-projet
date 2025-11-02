@@ -4,6 +4,7 @@
  import com.example.ProjetApiBts.enums.StatutPrelevement;
  import com.example.ProjetApiBts.models.*;
  import com.example.ProjetApiBts.repository.*;
+ import com.example.ProjetApiBts.repository.PrelevementRepository;
  import com.example.ProjetApiBts.shared.Ids;
  import lombok.RequiredArgsConstructor;
  import org.springframework.stereotype.Service;
@@ -174,6 +175,7 @@
          }catch (Exception e){
              System.err.println("Erreur lors de l'envoie de l'Email : " + e.getMessage());
          }
+         a.getPatient().setStatutConsultation(StatutPatient.CONSULTER);
 
          return analyses;
      }
