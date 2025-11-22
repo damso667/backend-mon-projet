@@ -2,15 +2,15 @@ package com.example.ProjetApiBts.config;
 
 // ========================== // PACKAGE: com.example.ProjetApiBts // ========================== //
 // Ce bundle ajoute:
-// 1) Authentification par SESSION pour Médecins et Techniciens (email + mot de passe BCrypt)
-// 2) Endpoints réservés aux Médecins pour lister les patients dispo (tri alpha) et "récupérer" un patient
+//  Authentification par SESSION pour Médecins et Techniciens (email + mot de passe BCrypt)
+//  Endpoints réservés aux Médecins pour lister les patients dispo (tri alpha) et "récupérer" un patient
 // - Attribution exclusive: une fois récupéré par un médecin, les autres ne le voient plus et ne peuvent plus l'assigner
-// 3) Codes de retour HTTP appropriés (200, 401, 403, 404, 409)
-// 4) Gestion de concurrence via verrou pessimiste lors de l'assignation //
-// NB: garde les autorités telles que définies dans tes entités: ROLE_MEDECIN et ROLE_TECHNITIEN (orthographe inchangée) //
+//  Codes de retour HTTP appropriés (200, 401, 403, 404, 409)
+//  Gestion de concurrence via verrou pessimiste lors de l'assignation //
+//  garde les autorités telles que définies dans tes entités: ROLE_MEDECIN et ROLE_TECHNITIEN (orthographe inchangée) //
 // Dépendances attendues: spring-boot-starter-web, spring-boot-starter-security, spring-boot-starter-data-jpa, lombok // ==========================
 
-// ========================== // SecurityConfig.java // ========================== package com.example.ProjetApiBts.config;
+
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

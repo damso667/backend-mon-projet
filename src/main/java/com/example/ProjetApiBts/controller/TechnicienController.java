@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/techniciens")
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('TECHNITIEN')") // orthographe conforme à ta config
+@PreAuthorize("hasRole('TECHNITIEN')")
 public class TechnicienController {
 
     private final AnalyseService service;
@@ -26,6 +26,7 @@ public class TechnicienController {
     @GetMapping("/analyses-a-faire")
     public ResponseEntity<ApiResponse<List<AnalyseDTO>>> aFaire() {
         List<AnalyseDTO> list = service.analysesAFaire().stream().map(AnalyseDTO::of).toList();
+
         return ResponseEntity.ok(ApiResponse.ok(list));
     }
 

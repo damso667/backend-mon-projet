@@ -32,6 +32,7 @@ public class MedecinController {
     private  final AnalyseRepository analyseRepository;
     private final NotificationRepository notificationRepository;
      @GetMapping("/patients")
+
      public ResponseEntity<List<PatientDTO>> listerPatients(@RequestParam(value = "disponibles", defaultValue = "true") boolean disponibles){
          List<Patient> patients = disponibles ? medecinService
                  .listerPatientsDisponiblesTrieAlpha() : medecinService.listerPatientsDisponiblesTrieAlpha(); // ici on n'expose que les disponibles selon ton besoin

@@ -10,10 +10,10 @@ import java.util.List;
 
         public record AnalyseDTO(
                 Long id,
-                Long patientId,
-                Long medecinId,
+                String patientId,
+                String medecinId,
                 Long technicienId,
-                Long typeExamenId,
+                String typeExamenId,
                 String description,
                 String resultats,
                 Boolean valide,
@@ -23,10 +23,10 @@ import java.util.List;
             public static AnalyseDTO of(Analyse a) {
                 return new AnalyseDTO(
                         a.getId(),
-                        a.getPatient() != null ? a.getPatient().getId() : null,
-                        a.getMedecin() != null ? a.getMedecin().getId() : null,
+                        a.getPatient() != null ? a.getPatient().getNom() : null,
+                        a.getMedecin() != null ? a.getMedecin().getNom() : null,
                         a.getTechnicien() != null ? a.getTechnicien().getId() : null,
-                        a.getTypeExamen() != null ? a.getTypeExamen().getId() : null,
+                        a.getTypeExamen() != null ? a.getTypeExamen().getNom() : null,
                         a.getDescription(),
                         a.getResultats(),
                         a.getValide(),
