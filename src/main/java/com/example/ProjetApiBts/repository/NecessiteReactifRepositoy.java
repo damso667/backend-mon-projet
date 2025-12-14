@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.lang.model.element.TypeElement;
+import java.util.List;
 import java.util.Optional;
 
 public interface NecessiteReactifRepositoy extends JpaRepository<NecessiteReactif,Long> {
@@ -19,4 +20,6 @@ public interface NecessiteReactifRepositoy extends JpaRepository<NecessiteReacti
     @Modifying
     @Query("delete from NecessiteReactif nr where nr.reactif.id = :reactifId")
     void deleteByReactifId(@Param("reactifId") Long reactifId);
+
+    List<NecessiteReactif> findByTypeExamen(TypeExament typeExamen);
 }

@@ -26,6 +26,8 @@
      private final MedecinRepository medecinRepository;
      private final TechnicienRepository technicientRepository;
      private final NotificationRepository notificationRepository;
+     private final ReactifRepository reactifRepository;
+     private final NecessiteReactifRepositoy necessiteReactifRepositoy;
      private final EmailService emailService;
 
      // ----- MÉDECIN : prescrire une analyse (seulement si le ticket du patient est payé ET s'il suit le patient)
@@ -58,6 +60,19 @@
          analyse.setMedecin(medecinConnecte); // prescripteur
          analyse.setTypeExamen(typeExamen);
          analyse.setValide(false);
+
+         List<NecessiteReactif> necessiteReactifs = necessiteReactifRepositoy.findByTypeExamen(typeExamen);
+         for (NecessiteReactif necessite : necessiteReactifs) {
+             Reactif reactif = necessite.getReactif();
+             double quantiteParAnalyse = necessite.getQuantiteParAnalyse();
+             if (reactif.getStock() >= quantiteParAnalyse) {
+                 reactif.setStock(reactif.getStock() - quantiteParAnalyse);
+                 reactifRepository.save(reactif);  // Sauvegarde le réactif avec le stock mis à jour
+             } else {
+                 // Pas assez de stock
+                 return null; // ou lever une exception si tu veux un comportement spécifique
+             }
+         }
          return analyseRepository.save(analyse);
 
 

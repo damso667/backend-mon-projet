@@ -54,8 +54,7 @@ public class ProjetApiBtsApplication {
             m3.setPassword(passwordEncoder.encode("ndoumbe123@gmail.com"));
             m3.setSpecialiter(Specilite.OPTICIEN);
 
-            Medecin m4 = new Medecin();
-            m4.setNom("TALLA KOUMETIO");
+            Medecin m4 = new Medecin();m4.setNom("TALLA KOUMETIO");
             m4.setPrenom("Romeo");
             m4.setEmail("romeoTalla@gmail.com");
             m4.setDateNaissance("01-11-1984");

@@ -16,7 +16,7 @@ public class ReactifDTO {
     private String nom;
     private String code;
     private String unite;
-    private int stock;
+    private double stock;
     private Long dernierModifieParId;
 
     public static ReactifDTO of(Reactif r) {

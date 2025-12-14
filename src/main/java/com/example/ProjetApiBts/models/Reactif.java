@@ -43,7 +43,7 @@ public class Reactif {
      @Column(length = 15)
      private String unite; // mL, mg, UI...
 
-     private Integer stock; // quantité en stock
+     private double stock; // quantité en stock
 
      @Temporal(TemporalType.DATE)
      private Date datePeremption;

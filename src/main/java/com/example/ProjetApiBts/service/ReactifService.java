@@ -79,7 +79,7 @@ public class ReactifService {
         Secretaire secretaire = secretaireRepository.findById(responsableId)
                 .orElseThrow();
         Reactif reactif = reactifRepository.findById(reactifId).orElseThrow();
-        int nouveauStock = (reactif.getStock() - quantite);
+        double nouveauStock = (reactif.getStock() - quantite);
          reactif.setStock(nouveauStock);
         if(nouveauStock < 0){
             throw  new IllegalAccessException("le stock ne peut pas devenir negatif");
