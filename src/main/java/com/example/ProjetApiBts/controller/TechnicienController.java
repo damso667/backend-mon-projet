@@ -24,7 +24,7 @@ public class TechnicienController {
 
     // GET /api/techniciens/analyses-a-faire
     @GetMapping("/analyses-a-faire")
-    public ResponseEntity<ApiResponse<List<AnalyseDTO>>> aFaire() {
+    public ResponseEntity<ApiResponse<List<AnalyseDTO>>> aFaire() {//methode pour recuperer les analyses a faire avec le apiresponse qui encapsule la reponse
         List<AnalyseDTO> list = service.analysesAFaire().stream().map(AnalyseDTO::of).toList();
 
         return ResponseEntity.ok(ApiResponse.ok(list));

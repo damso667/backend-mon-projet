@@ -15,7 +15,7 @@ public class NecessiteReactif {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false)//qui veut dire que
     @JoinColumn(name = "type_examen_id")
     @JsonBackReference
     private TypeExament typeExamen;

@@ -1,6 +1,6 @@
 package com.example.ProjetApiBts.dto;
 
-public record ApiResponse<T>(
+public record ApiResponse<T>(//cette classe permet de standardiser les reponses de l'api cet a dire de definir un format commun pour toutes les reponses envoyees par l'api
         boolean success,
         String message,
         T data

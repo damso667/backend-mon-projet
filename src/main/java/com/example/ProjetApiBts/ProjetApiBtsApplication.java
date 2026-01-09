@@ -22,7 +22,7 @@ public class ProjetApiBtsApplication {
     }
 
     @Bean
-    CommandLineRunner initData(MedecinRepository medecinRepository, TechnicienRepository technicienRepository,
+   CommandLineRunner  initData(MedecinRepository medecinRepository, TechnicienRepository technicienRepository,
                                TypeExamenRepository typeExamenRepository,NecessiteReactifRepositoy necessiteReactifRepository,SecretaireRepository secretaireRepository,
                                PasswordEncoder passwordEncoder, PatientRepository patientRepository , ReactifRepository reactifRepository) {
         return args -> {
@@ -189,6 +189,7 @@ public class ProjetApiBtsApplication {
             p2.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
 
 
+
             Patient p3 = new Patient();
             p3.setNom("AWOTA");
             p3.setPrenom("Loren");
@@ -253,6 +254,8 @@ public class ProjetApiBtsApplication {
             p8.setAdresse("Douala");
             p8.setStatutConsultation(StatutPatient.EN_ATTENTE);
             p8.setStatutPrelevement(StatutPrelevement.NON_EFFECTUER);
+
+
 
 
             Optional<Patient> patientOptional1 = patientRepository.findByEmail(p1.getEmail());

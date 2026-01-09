@@ -27,7 +27,7 @@ import java.util.List;
 public class MedecinService {
 
     private final PatientRepository patientRepository;
-    private final MedecinRepository medecinRepository;// ⬅️ injection ajoutée
+    private final MedecinRepository medecinRepository;
     private final TicketRepository ticketRepository;
 
     public List<Patient> listerPatientsDisponiblesTrieAlpha(){

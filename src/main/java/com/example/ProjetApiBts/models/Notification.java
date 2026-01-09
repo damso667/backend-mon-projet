@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -26,5 +27,7 @@ public class Notification {
     @JoinColumn(name = "medecin_id")
     private Medecin medecin;
 
-    private LocalDateTime dateCreation = LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime dateCreation;
+
 }

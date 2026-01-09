@@ -18,7 +18,7 @@ public class AnalyseQueryController {
     private final AnalyseService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<AnalyseDTO>> byId(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<AnalyseDTO>> byId(@PathVariable Long id) {//cette methode permet de recuperer une analyse par son id
         var a = service.getById(id);
         if (a == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(ApiResponse.ok(AnalyseDTO.of(a)));

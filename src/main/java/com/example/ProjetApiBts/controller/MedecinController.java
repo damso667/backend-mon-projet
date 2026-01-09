@@ -130,10 +130,17 @@ public class MedecinController {
     }
 
     @GetMapping("/notifications")
-    public ResponseEntity<List<Notification>> getNotifications(
+    public ResponseEntity<List<NotifictionDto>> getNotifications(
             @AuthenticationPrincipal(expression = "id") Long medecinId
     ) {
-        return ResponseEntity.ok(notificationRepository.findByMedecinIdAndLueFalse(medecinId));
+        List<Notification> entities = notificationRepository.findByMedecinIdOrderByDateCreationDesc(medecinId);
+
+        // On transforme chaque entité en DTO
+        List<NotifictionDto> dtos = entities.stream()
+                .map(NotifictionDto::of)
+                .toList();
+
+        return ResponseEntity.ok(dtos);
     }
 
     @PostMapping("/notifications/{id}/marquer-lue")

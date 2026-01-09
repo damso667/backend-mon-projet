@@ -106,7 +106,7 @@
              a.setTechnicien(tech);
              Analyse saved = analyseRepository.save(a);
 
-             // 🔔 Créer notification pour le médecin prescripteur
+             //  Créer notification pour le médecin prescripteur
              notificationRepository.save(
                      Notification.builder()
                              .medecin(saved.getMedecin())
