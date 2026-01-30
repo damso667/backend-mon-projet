@@ -84,14 +84,19 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200"));
-        corsConfiguration.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTION","PATCH"));
+        // Ajoute ton URL Vercel ET garde localhost pour tes tests
+        corsConfiguration.setAllowedOrigins(List.of(
+                "http://localhost:4200",
+                "https://mon-projet-frontend-9b5q.vercel.app"
+        ));
+
+        // Correction: "OPTIONS" au lieu de "OPTION"
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         corsConfiguration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**",corsConfiguration);
-        return  source;
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
     }
-
 }
