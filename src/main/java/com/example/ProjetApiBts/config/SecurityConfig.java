@@ -67,15 +67,18 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
+
+                        // Regroupe les accès par préfixe d'URL
                         .requestMatchers("/api/medecins/**").hasRole("MEDECIN")
 
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/medecins/**").hasRole("MEDECIN")
+                        // Attention à l'orthographe de TECHNITIEN (doit être identique partout)
                         .requestMatchers("/api/techniciens/**").hasRole("TECHNITIEN")
-                        .requestMatchers("/api/analyses/**").hasAnyRole("MEDECIN")
-                        .requestMatchers("/api/analyses/**").hasAnyRole("TECHNICIEN")
-                        .requestMatchers("/api/reactifs/**").hasAnyRole("SECRETAIRE","TECHNITIEN")
-                        .requestMatchers("/api/type-examens/**").hasAnyRole("MEDECIN","TECHNITIEN","SECRETAIRE")
+
+                        // Utilise hasAnyRole pour les ressources partagées
+                        .requestMatchers("/api/analyses/**").hasAnyRole("MEDECIN", "TECHNITIEN")
+                        .requestMatchers("/api/reactifs/**").hasAnyRole("SECRETAIRE", "TECHNITIEN")
+                        .requestMatchers("/api/type-examens/**").hasAnyRole("MEDECIN", "TECHNITIEN", "SECRETAIRE")
+
                         .anyRequest().authenticated()
                 ) .build();
     }
