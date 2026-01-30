@@ -10,11 +10,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
 @SpringBootApplication
+@EnableAsync
 public class ProjetApiBtsApplication {
 
     public static void main(String[] args) {
@@ -169,7 +171,7 @@ public class ProjetApiBtsApplication {
             p1.setNom("Tamo");
             p1.setPrenom("Geraard");
             p1.setSexe(Sexe.MASCULIN);
-            p1.setEmail("Gerad@gmail.com");
+            p1.setEmail("foundikouraissa71@gmail.com");
             p1.setDate_Naissance("02-02-1980");
             p1.setTelephone("650000000");
             p1.setAdresse("MELEN");
@@ -194,7 +196,7 @@ public class ProjetApiBtsApplication {
             p3.setNom("AWOTA");
             p3.setPrenom("Loren");
             p3.setSexe(Sexe.FEMININ);
-            p3.setEmail("awota@gmail.com");
+            p3.setEmail("serenakoumetio@gmail.com");
             p3.setDate_Naissance("03-03-1995");
             p3.setTelephone("653857075");
             p3.setAdresse("TRADAT");
