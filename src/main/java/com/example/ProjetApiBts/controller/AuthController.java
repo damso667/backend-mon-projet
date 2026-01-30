@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://mon-projet-frontend-9b5q.vercel.app")
 @RequiredArgsConstructor
 public class AuthController {
 

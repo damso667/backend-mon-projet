@@ -22,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/medecins")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://mon-projet-frontend-9b5q.vercel.app")
 
 @RequiredArgsConstructor
 public class MedecinController {

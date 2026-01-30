@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="https://mon-projet-frontend-9b5q.vercel.app")
 @RequestMapping("/api/prelevements")
 @RequiredArgsConstructor
 public class PrelevementController {
