@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @SpringBootApplication
-@EnableAsync
+//@EnableAsync
 public class ProjetApiBtsApplication {
 
     public static void main(String[] args) {
