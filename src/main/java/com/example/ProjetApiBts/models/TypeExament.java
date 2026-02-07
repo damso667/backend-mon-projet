@@ -17,7 +17,8 @@ import java.util.*;
 @Builder
 @Table(name = "type_examen", uniqueConstraints = @UniqueConstraint(columnNames = "nom"))
 public class TypeExament {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 150)

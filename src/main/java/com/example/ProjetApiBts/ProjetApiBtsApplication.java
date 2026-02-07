@@ -298,9 +298,7 @@ public class ProjetApiBtsApplication {
                 patientRepository.save(p8);
             }
 
-             // déjà seedé
-            // 5 types d'examens connus au démarrage
-// Hémogramme
+
             TypeExament hemo = typeExamenRepository.findByNom("Hémogramme")
                     .orElseGet(() -> typeExamenRepository.save(
                             TypeExament.builder().nom("Hémogramme").description("Numération formule sanguine").build()
