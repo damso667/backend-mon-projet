@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class EmailService {
     private final JavaMailSender javaMailSender;
 
-    @Async
     public void envoyerEmail(String to, String sujet, String contenu) {
         try {
             log.info("Tentative d'envoi d'email à : {}", to);

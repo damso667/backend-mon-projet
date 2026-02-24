@@ -183,13 +183,21 @@
          a.setValide(true);
          a.setDateValidation(new Date());
          Analyse analyses = analyseRepository.save(a);
-         try {
-             String contenu = "Bonjour "+ a.getPatient().getNom() +",\n\n"
-                     + "votre analyse est deja disponible et elle a ete valiser par Dr " +analyses.getMedecin().getNom()+" veiller vous diriger vers le laaboratoire pour resevoir le resultat "+".\n\n";
-             emailService.envoyerEmail(analyses.getPatient().getEmail(),"Resultat de votre analyse validee",contenu);
-         }catch (Exception e){
-             System.err.println("Erreur lors de l'envoie de l'Email : " + e.getMessage());
-         }
+
+        // Extraction des données en variables simples avant l'appel email
+        String emailPatient = patient.getEmail();
+        String nomPatient = patient.getNom();
+        String nomMedecin = m.getNom();
+
+        try {
+            String contenu = "Bonjour " + nomPatient + ",\n\n"
+                    + "Votre analyse est désormais disponible et a été validée par Dr " + nomMedecin
+                    + ". Veuillez vous diriger vers le laboratoire pour recevoir le résultat.\n\n";
+            emailService.envoyerEmail(emailPatient, "Résultat de votre analyse validée", contenu);
+        } catch (Exception e) {
+            System.err.println("Erreur lors de l'envoi de l'email : " + e.getMessage());
+            e.printStackTrace();
+        }
          a.getPatient().setStatutConsultation(StatutPatient.CONSULTER);
 
          return analyses;
