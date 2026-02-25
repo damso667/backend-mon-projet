@@ -1,4 +1,4 @@
-# 🏥 ProjetApiBts - Backend de Gestion de Laboratoire d'Analyses Médicales
+# ProjetApiBts - Backend de Gestion de Laboratoire d'Analyses Médicales
 
 ![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
