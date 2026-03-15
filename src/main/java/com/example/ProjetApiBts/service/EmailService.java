@@ -23,6 +23,9 @@ public class EmailService {
         try {
             log.info("Tentative d'envoi d'email à : {}", to);
 
+            log.debug("Longueur de la clé API récupérée : {}", (brevoApiKey != null ? brevoApiKey.length() : "NULL"));
+
+
             // Construction du header
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
